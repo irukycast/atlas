@@ -11,6 +11,7 @@ atlas/
 ├── script.js
 ├── privacy.html
 ├── terms.html
+├── data-deletion.html
 └── README.md
 ```
 
@@ -94,3 +95,31 @@ Revisá las condiciones vigentes del plan de Vercel que vayas a usar: el plan Ho
 - No hay datos ficticios de contacto, clientes, certificaciones o estadísticas.
 
 GitHub Pages también publica sitios en internet, pero sus términos indican que no debe usarse como hosting gratuito para operar un negocio online o un SaaS comercial. Verificá la política vigente antes de elegirlo para el sitio oficial.
+
+
+## Eliminación de datos (octubre de 2026)
+
+La página `data-deletion.html` usa el email público existente y los mismos estilos
+que las páginas legales. Hay enlaces visibles desde los tres footers.
+
+URL final: https://irukycast.github.io/atlas/data-deletion.html
+
+Publicación: GitHub Pages desde la rama `main`. Tras cada push, comprobar que
+la URL pública devuelve 200 y contiene el email y las instrucciones vigentes.
+
+Validar sin dependencias externas:
+
+```powershell
+python -m unittest discover -s tests -v
+```
+
+Los tests comprueban titular legal, correo consistente, enlaces y fragmentos bajo
+`/atlas/`, ausencia de placeholders y uso del CSS compartido. Para servir la ruta
+exacta localmente, desde la carpeta padre de `atlas`:
+
+```powershell
+python -m http.server 8766 --bind 127.0.0.1
+```
+
+Abrir `http://127.0.0.1:8766/atlas/data-deletion.html`. Esta URL local es solo una
+vista previa; no debe usarse en la configuración de Meta.
